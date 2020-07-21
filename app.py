@@ -45,5 +45,5 @@ app.layout = html.Div([row0, row1, row2],
 
 
 #app.run()
-#if __name__ == '__main__':
-app.run_server(debug=True, use_reloader=True)  # Turn off reloader if inside Jupyter
+if __name__ == '__main__':
+    app.run_server(debug=True, use_reloader=True)  # Turn off reloader if inside Jupyter
