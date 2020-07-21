@@ -27,12 +27,26 @@ auth = dash_auth.BasicAuth(
     [('admin', 'secret')]
 )
 
-app.layout = html.Div([html.Div([html.Div([dcc.Graph(figure=fig1)], 
-                                          className='col-sm'),
-                                 html.Div([dcc.Graph(figure=fig2)], 
-                                          className='col-sm')], 
-                                className='row')], 
+row0 = html.Div([html.Div([html.H1('Заголовок')], 
+                          className='col-sm')],
+                className='row')
+
+row1 = html.Div([html.Div([dcc.Graph(figure=fig1)], 
+                          className='col-sm'),
+                 html.Div([dcc.Graph(figure=fig2)], 
+                          className='col-sm')], 
+                className='row')
+
+row2 = html.Div([html.Div([html.P('f(x) = x<sup>2</sup>')], 
+                          className='col-sm'),
+                 html.Div([html.P('h(x) = sin(x)')], 
+                          className='col-sm')], 
+                className='row')
+
+app.layout = html.Div([row0, row1, row2], 
                       className='container')
+
+                      
 
 if __name__ == '__main__':
     app.run_server(debug=True)
