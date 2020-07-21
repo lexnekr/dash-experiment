@@ -7,7 +7,16 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_auth
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+x = np.arange(0, 5, 0.1)
+def f(x):
+    return x**2
+def h(x):
+    return np.sin(x)
+
+fig1 = go.Figure(go.Scatter(x=x, y=f(x)))
+fig2 = go.Figure(go.Scatter(x=x, y=h(x)))
+
+external_stylesheets = ['https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
