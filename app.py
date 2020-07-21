@@ -22,20 +22,17 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 server = app.server
 
-app.layout = html.Div([
-    html.H2('Hello World'),
-    dcc.Dropdown(
-        id='dropdown',
-        options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
-        value='LA'
-    ),
-    html.Div(id='display-value')
-])
+auth = dash_auth.BasicAuth(
+    app,
+    [('admin', 'secret')]
+)
 
-@app.callback(dash.dependencies.Output('display-value', 'children'),
-              [dash.dependencies.Input('dropdown', 'value')])
-def display_value(value):
-    return 'You have selected "{}"'.format(value)
+app.layout = html.Div([html.Div([html.Div([dcc.Graph(figure=fig1)], 
+                                          className='col-sm'),
+                                 html.Div([dcc.Graph(figure=fig2)], 
+                                          className='col-sm')], 
+                                className='row')], 
+                      className='container')
 
 if __name__ == '__main__':
     app.run_server(debug=True)
